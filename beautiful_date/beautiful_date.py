@@ -90,7 +90,7 @@ class BaseDateFormat:
         return _PartialDate(first, self._format)
 
     def __str__(self):
-        return '{}({})'.format(self.__class__.__name__, self._format)
+        return '{}{}'.format(self.__class__.__name__, self._format)
 
 
 class DMY(BaseDateFormat):
