@@ -1,4 +1,4 @@
-from dateutil.relativedelta import relativedelta
+from dateutil.relativedelta import relativedelta, weekdays
 from datetime import date, datetime
 from beautiful_date import *
 
@@ -19,6 +19,13 @@ class _RelativeDelta(relativedelta):
             return new_date
 
     __radd__ = __add__
+
+    def __sub__(self, d):
+        new_date = super().__sub__(d)
+        if isinstance(new_date, date) and not isinstance(new_date, datetime):
+            return BeautifulDate(new_date.year, new_date.month, new_date.day)
+        else:
+            return new_date
 
 
 class BeautifulTimedelta:
@@ -49,48 +56,8 @@ hours = _('hours')
 minutes = _('minutes')
 seconds = _('seconds')
 microseconds = _('microseconds')
-
-
-class _RelativeSetter(relativedelta):
-    """Sets given time unit on a date
-
-    Examples:
-        >>> 11/Jan/2017 << 5 * month << 10 * second
-        datetime.datetime(2017, 5, 11, 0, 0, 10)
-
-        >>> (D @ 1/1/1999)[0:10] << 2 * month << 25 * day << 22 * hour
-        datetime.datetime(1999, 2, 25, 22, 10)
-
-        >>> d1 = D @ 1 /1/1999
-        >>> d1 <<= 10*month + 16*day + 1995*year
-        >>> d1
-        BeautifulDate(1995, 10, 16)
-
-        >>> d1 = D @ 1 /1/1999
-        >>> d1 <<= 10*month << 16*day << 1995*year
-        >>> d1
-        BeautifulDate(1995, 10, 16)
-    """
-
-    def __add__(self, d):
-        new_date = super().__add__(d)
-        if isinstance(new_date, date) and not isinstance(new_date, datetime):
-            return BeautifulDate(new_date.year, new_date.month, new_date.day)
-        else:
-            return new_date
-
-    __lshift__ = __rlshift__ = __radd__ = __add__
-
-
-class BeautifulSetter:
-    def __init__(self, name):
-        self.name = name
-
-    def __rmul__(self, n):
-        return _RelativeSetter(**{self.name: n})
-
-
-_ = BeautifulSetter
+leapdays = _('leapdays')
+leapday = 1 * leapdays
 
 year = _('year')
 month = _('month')
@@ -99,3 +66,55 @@ hour = _('hour')
 minute = _('minute')
 second = _('second')
 microsecond = _('microsecond')
+
+yearday = _('yearday')
+nlyearday = _('nlyearday')
+
+_weekday = _('weekday')
+
+
+class BeautifulWeekday:
+    """
+
+    Examples:
+        Get next Monday:
+        >>> d = 29/Mar/2018  # Thursday
+        >>> d + MO  # Equivalent to MO(1)
+        BeautifulDate(2018, 4, 2)
+
+        Get second to next Monday:
+        >>> d = 29/Mar/2018
+        >>> d + MO(2)
+        BeautifulDate(2018, 4, 9)
+
+        Get last Saturday:
+        >>> d = 29/Mar/2018
+        >>> d - SA
+        BeautifulDate(2018, 3, 24)
+
+        Get second to last Saturday:
+        >>> d = 29/Mar/2018
+        >>> d - SA(2)
+        BeautifulDate(2018, 3, 17)
+
+        Get second to last Saturday (same as previous):
+        >>> d = 29/Mar/2018
+        >>> d + SA(-2)
+        BeautifulDate(2018, 3, 17)
+    """
+
+    def __init__(self, wd, n=1):
+        self.wd = wd
+        self.n = n
+
+    def __radd__(self, other):
+        return other + self.wd(self.n) * _weekday
+
+    def __rsub__(self, other):
+        return other + self.wd(-self.n) * _weekday
+
+    def __call__(self, n):
+        return BeautifulWeekday(self.wd, n)
+
+
+weekdays = MO, TU, WE, TH, FR, SA, SU = [BeautifulWeekday(weekdays[i]) for i in range(7)]
