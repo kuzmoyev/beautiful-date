@@ -6,3 +6,5 @@ from beautiful_date.beautiful_timedelta import \
     years, months, weeks, days, hours, minutes, seconds, microseconds, leapday, \
     year, month, day, hour, minute, second, microsecond, yearday, nlyearday, \
     MO, TU, WE, TH, FR, SA, SU
+
+from beautiful_date.date_range import drange

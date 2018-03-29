@@ -45,7 +45,7 @@ Or alternatively:
     >>> d = D @ 3/25/2018  # US format
     BeautifulDate(2018, 3, 25)
     
-Available formats:
+Available formats (needed only if you create dates using `D@`):
     
     class DMY(BaseDateFormat):
         _format = 'day', 'month', 'year'
@@ -169,3 +169,55 @@ Get second to last Saturday (same as previous):
     >>> d = 29/Mar/2018
     >>> d + SA(-2)
     BeautifulDate(2018, 3, 17)
+    
+### Util
+
+#### drange:
+
+You can use `drange` to generate ranges of dates:
+
+    >>> for d in drange(27/Mar/1994, 5/Apr/1994):
+    ...     print(d)
+    1994-03-27
+    1994-03-28
+    1994-03-29
+    1994-03-30
+    1994-03-31
+    1994-04-01
+    1994-04-02
+    1994-04-03
+    1994-04-04
+    
+    >>> for d in drange(27/Mar/1994, 5/Apr/1994, 2*days):
+    ...     print(d)
+    1994-03-27
+    1994-03-29
+    1994-03-31
+    1994-04-02
+    1994-04-04
+    
+and datetimes:
+
+    >>> for dt in drange((27/Mar/1994)[10:25], (4/Apr/1994)[10:10]):
+    ...     print(dt)
+    1994-03-27 10:25:00
+    1994-03-28 10:25:00
+    1994-03-29 10:25:00
+    1994-03-30 10:25:00
+    1994-03-31 10:25:00
+    1994-04-01 10:25:00
+    1994-04-02 10:25:00
+    1994-04-03 10:25:00
+    
+    >>> for dt in drange((27/Mar/1994)[10:25], (4/Apr/1994)[10:10], 20*hours):
+    ...     print(dt)
+    1994-03-27 10:25:00
+    1994-03-28 06:25:00
+    1994-03-29 02:25:00
+    1994-03-29 22:25:00
+    1994-03-30 18:25:00
+    1994-03-31 14:25:00
+    1994-04-01 10:25:00
+    1994-04-02 06:25:00
+    1994-04-03 02:25:00
+    1994-04-03 22:25:00
