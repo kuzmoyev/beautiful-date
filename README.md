@@ -30,6 +30,13 @@ Using months names:
     BeautifulDate(2018, 3, 25)
     
 Using months numbers:
+    
+    >>> 25/M[3]/2018  # European format
+    BeautifulDate(2018, 3, 25)
+    >>> M[3]/25/2018  # US format
+    BeautifulDate(2018, 3, 25)
+
+Or alternatively:
 
     >>> D @ 25/3/2018  # European format (default)
     BeautifulDate(2018, 3, 25)
@@ -92,7 +99,7 @@ This library also provides simple interface for
 
 #### Adding/Subtracting/Setting timedeltas:
 
-Notice singular time unit (year, month, ...) sets given value, plural (years, months,) adds it.
+Notice that singular time unit (year, month, ...) sets given value, plural (years, months,) adds it.
 
 
     >>> d = 26/Mar/2018

@@ -165,15 +165,4 @@ class _Month:
     __rtruediv__ = __rsub__ = __truediv__ = __sub__
 
 
-Jan = _Month(1)
-Feb = _Month(2)
-Mar = _Month(3)
-Apr = _Month(4)
-May = _Month(5)
-Jun = _Month(6)
-Jul = _Month(7)
-Aug = _Month(8)
-Sept = _Month(9)
-Oct = _Month(10)
-Nov = _Month(11)
-Dec = _Month(12)
+M = _, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sept, Oct, Nov, Dec = [_Month(i) for i in range(13)]

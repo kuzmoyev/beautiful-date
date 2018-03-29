@@ -15,10 +15,14 @@ class TestBeautifulDate(unittest.TestCase):
         self.assertEqual(Feb - 7 - 1973, date(day=7, month=2, year=1973))
         self.assertEqual(29 - Feb - 1992, date(day=29, month=2, year=1992))
 
-    def test_date_create_by_prefix_DMY(self):
+    def test_date_create_by_month_number(self):
         self.assertEqual(D @ 21 / 12 / 1995, date(day=21, month=12, year=1995))
         self.assertEqual(D @ 21 - 12 - 1994, date(day=21, month=12, year=1994))
         self.assertEqual(D @ 29 / 2 / 1988, date(day=29, month=2, year=1988))
+
+        self.assertEqual(21 / M[12] / 1995, date(day=21, month=12, year=1995))
+        self.assertEqual(21 - M[12] - 1994, date(day=21, month=12, year=1994))
+        self.assertEqual(29 / M[2] / 1988, date(day=29, month=2, year=1988))
 
     def test_date_create_by_prefix_MDY(self):
         D = MDY()
