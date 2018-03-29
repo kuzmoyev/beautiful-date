@@ -1,5 +1,24 @@
 from dateutil.relativedelta import relativedelta
+from datetime import date, datetime
 from beautiful_date import *
+
+
+class _RelativeDelta(relativedelta):
+    """Same as relativedelta, but returns BeautifulDate in the result.
+
+    Examples:
+        >>> 16/Jan/2005 + 5*days
+        BeautifulDate(2005, 1, 21)
+    """
+
+    def __add__(self, d):
+        new_date = super().__add__(d)
+        if isinstance(new_date, date) and not isinstance(new_date, datetime):
+            return BeautifulDate(new_date.year, new_date.month, new_date.day)
+        else:
+            return new_date
+
+    __radd__ = __add__
 
 
 class BeautifulTimedelta:
@@ -7,17 +26,17 @@ class BeautifulTimedelta:
 
     Examples:
         >>> 3*years
-        relativedelta(years=+3)
+        _RelativeDelta(years=+3)
 
         >>> -5*weeks
-        relativedelta(days=-35)
+        _RelativeDelta(days=-35)
     """
 
     def __init__(self, name):
         self.name = name
 
     def __rmul__(self, n):
-        return relativedelta(**{self.name: n})
+        return _RelativeDelta(**{self.name: n})
 
 
 _ = BeautifulTimedelta
@@ -45,15 +64,22 @@ class _RelativeSetter(relativedelta):
         >>> d1 = D @ 1 /1/1999
         >>> d1 <<= 10*month + 16*day + 1995*year
         >>> d1
-        datetime.date(1995, 10, 16)
+        BeautifulDate(1995, 10, 16)
 
         >>> d1 = D @ 1 /1/1999
         >>> d1 <<= 10*month << 16*day << 1995*year
         >>> d1
-        datetime.date(1995, 10, 16)
+        BeautifulDate(1995, 10, 16)
     """
 
-    __lshift__ = __rlshift__ = relativedelta.__radd__
+    def __add__(self, d):
+        new_date = super().__add__(d)
+        if isinstance(new_date, date) and not isinstance(new_date, datetime):
+            return BeautifulDate(new_date.year, new_date.month, new_date.day)
+        else:
+            return new_date
+
+    __lshift__ = __rlshift__ = __radd__ = __add__
 
 
 class BeautifulSetter:
@@ -68,7 +94,6 @@ _ = BeautifulSetter
 
 year = _('year')
 month = _('month')
-week = _('week')
 day = _('day')
 hour = _('hour')
 minute = _('minute')

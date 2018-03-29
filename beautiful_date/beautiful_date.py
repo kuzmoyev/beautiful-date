@@ -2,7 +2,7 @@ from datetime import date, datetime
 
 
 class BeautifulDate(date):
-    """Date object that can be extended to datetime by using python slices:
+    """Date object that can be extended to datetime by using Python indexing/slicing:
 
     Examples:
         >>> (Oct / 16 / 1995)[:]
@@ -101,6 +101,14 @@ class MDY(BaseDateFormat):
     _format = 'month', 'day', 'year'
 
 
+class YMD(BaseDateFormat):
+    _format = 'year', 'month', 'day'
+
+
+class YDM(BaseDateFormat):
+    _format = 'year', 'day', 'month'
+
+
 D = DMY()
 
 
@@ -111,7 +119,7 @@ D = DMY()
 class _Day:
     """Second step of creating date object
 
-    Sores month and day numbers. If applied operator '/' or '-', returns BeautifulDate with provided value of the year
+    Stores month and day numbers. If applied operator '/' or '-', returns BeautifulDate with provided value of the year
 
     Examples:
         >>> 16/Oct/1995
