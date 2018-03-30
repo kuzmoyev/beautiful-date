@@ -1,0 +1,15 @@
+language: python
+python:
+  - "3.5"
+  - "3.5-dev"  # 3.5 development branch
+  - "3.6"
+  - "3.6-dev"  # 3.6 development branch
+  - "3.7-dev"  # 3.7 development branch
+  # PyPy versions
+  - "pypy3.5"
+
+install:
+  - pip install beautiful-date
+  - pip install -r requirements.txt
+
+script: python -m pytest beautiful_tests

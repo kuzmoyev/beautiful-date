@@ -1,4 +1,8 @@
 # Beautiful Date
+
+[![Build Status](https://travis-ci.org/kuzmoyev/beautiful-date.svg?branch=master)](https://travis-ci.org/kuzmoyev/beautiful-date)
+[![PyPI version](https://badge.fury.io/py/beautiful-date.svg)](https://badge.fury.io/py/beautiful-date)
+
 Simple and beautiful way to create date and datetime objects in Python.
        
 **Before**:
@@ -14,6 +18,11 @@ Simple and beautiful way to create date and datetime objects in Python.
     
     d = 25/Mar/2018
     t = (25/Mar/2018)[23:45]
+
+
+## Installation
+
+    pip install beautiful-date
 
 
 ## Examples

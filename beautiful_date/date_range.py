@@ -1,6 +1,5 @@
 from datetime import date, datetime
 
-from beautiful_timedelta import *
 from beautiful_date import *
 
 
