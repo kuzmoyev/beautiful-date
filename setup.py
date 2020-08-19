@@ -61,7 +61,7 @@ REQUIRED = [
     'six==1.11.0'
 ]
 
-with io.open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
+with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = '\n' + f.read()
 
 setup(
@@ -69,6 +69,7 @@ setup(
     version=VERSION,
     description=DESCRIPTION,
     long_description=long_description,
+    long_description_content_type="text/markdown",
     author=AUTHOR,
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
