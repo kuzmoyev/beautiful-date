@@ -92,6 +92,15 @@ class BaseDateFormat:
     def __str__(self):
         return '{}{}'.format(self.__class__.__name__, self._format)
 
+    @staticmethod
+    def today():
+        today = date.today()
+        return BeautifulDate(year=today.year, month=today.month, day=today.day)
+
+    @staticmethod
+    def now():
+        return datetime.now()
+
 
 class DMY(BaseDateFormat):
     _format = 'day', 'month', 'year'
