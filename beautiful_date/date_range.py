@@ -23,19 +23,16 @@ class drange:
     When step is not given, 1-day step is used.
     """
 
-    def __init__(self, *args):
-        if len(args) == 1:
-            if isinstance(args[0], date):
+    def __init__(self, start_or_stop, stop=None, step=1 * days):
+        if stop is None:
+            if isinstance(start_or_stop, date):
                 now = date.today()
             else:
                 now = datetime.now()
-            start, stop, step = BeautifulDate(now.year, now.month, now.day), args[0], 1 * days
-        elif len(args) == 2:
-            (start, stop), step = args, 1 * days
-        elif len(args) == 3:
-            start, stop, step = args
+            start = BeautifulDate(now.year, now.month, now.day)
+            stop = start_or_stop
         else:
-            raise TypeError('drange() requires 1-3 arguments')
+            start = start_or_stop
 
         if not step:
             raise ValueError('drange() step must be positive or negative step, not 0')
