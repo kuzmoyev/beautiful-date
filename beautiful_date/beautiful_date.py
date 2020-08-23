@@ -29,7 +29,7 @@ class BeautifulDate(date):
         elif isinstance(t, int):
             h, m, s = t, 0, 0
         else:
-            return NotImplemented
+            return TypeError("Time values must be integer or slice, not {!r}".format(t.__class__.__name__))
 
         return datetime(self.year, self.month, self.day, hour=h, minute=m, second=s)
 
