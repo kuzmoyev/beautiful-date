@@ -64,6 +64,16 @@ BeautifulDate(2018, 3, 25)
 >>> d = D @ 3/25/2018  # US format
 BeautifulDate(2018, 3, 25)
 ```
+
+You can also easily retrieve current date as a `BeautifulDate` object and current time using:
+
+```python3
+>>> D.today()
+BeautifulDate(2020, 8, 24)
+
+>>> D.now()
+datetime.datetime(2020, 8, 24, 0, 59, 12, 451363)
+```
     
 Available formats (needed only if you create dates using `D@`):
     
