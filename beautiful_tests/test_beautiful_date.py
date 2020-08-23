@@ -41,6 +41,6 @@ class TestBeautifulDate(unittest.TestCase):
         self.assertEqual((D @ 29 - 2 - 1988)[10:11:12],
                          datetime(day=29, month=2, year=1988, hour=10, minute=11, second=12))
 
-
-if __name__ == '__main__':
-    unittest.main()
+    def test_time_type_error(self):
+        with self.assertRaises(TypeError):
+            _ = (15 / Jan / 2020)['evening']

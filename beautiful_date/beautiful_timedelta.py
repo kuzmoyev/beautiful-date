@@ -21,13 +21,6 @@ class _RelativeDelta(relativedelta):
 
     __radd__ = __add__
 
-    def __sub__(self, d):
-        new_date = super().__sub__(d)
-        if isinstance(new_date, date) and not isinstance(new_date, datetime):
-            return BeautifulDate(new_date.year, new_date.month, new_date.day)
-        else:
-            return new_date
-
 
 class BeautifulTimedelta:
     """Creates timedelta with specified time unit using operator '*'
