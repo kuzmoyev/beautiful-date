@@ -154,9 +154,9 @@ BeautifulDate(2, 3, 26)
 >>> d
 BeautifulDate(2018, 3, 2)
 
->>> t + 22 * hours
+>>> t + 22 * hour
 datetime.datetime(2018, 3, 26, 22, 23, 15)
->>> t += 22 * hours
+>>> t += 22 * hour
 >>> t
 datetime.datetime(2018, 3, 26, 22, 23, 15)
 ```
