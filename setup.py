@@ -54,11 +54,16 @@ DOWNLOAD_URL = 'https://github.com/kuzmoyev/beautiful-date/archive/1.0.tar.gz'
 EMAIL = 'kuzmovych.goog@gmail.com'
 AUTHOR = 'Yevhen Kuzmovych'
 REQUIRES_PYTHON = '>=3.5.0'
-VERSION = '1.0.1'
+VERSION = '2.0'
 
 REQUIRED = [
-    'python-dateutil==2.7.2',
-    'six==1.11.0'
+    'python-dateutil>=2.7.0',
+    'six>=1.11.0'
+]
+TESTS_REQUIRED = [
+    "pytest>=5.4",
+    "pytest-cov>=2.10",
+    "flake8>3.8.3"
 ]
 
 with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
@@ -78,18 +83,19 @@ setup(
     py_modules=['beautiful_date', 'beautiful_timedelta', 'date_range'],
     packages=['beautiful_date', 'beautiful_tests'],
     install_requires=REQUIRED,
+    tests_require=TESTS_REQUIRED,
     include_package_data=True,
     license='MIT',
     classifiers=[
         'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: Implementation :: PyPy'
+        'Programming Language :: Python :: 3.8',
     ],
     keywords=['beautiful', 'date', 'simple', 'timedelta', 'date-range'],
-    # $ setup.py publish support.
     cmdclass={
         'upload': UploadCommand,
     },
