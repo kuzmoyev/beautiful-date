@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/kuzmoyev/beautiful-date.svg?branch=master)](https://travis-ci.org/kuzmoyev/beautiful-date)
 [![PyPI version](https://badge.fury.io/py/beautiful-date.svg)](https://badge.fury.io/py/beautiful-date)
+[![Downloads](https://pepy.tech/badge/beautiful-date)](https://pepy.tech/project/beautiful-date)
 
 Simple and beautiful way to create date and datetime objects in Python.
        
