@@ -1,7 +1,10 @@
 import unittest
-
-from beautiful_date import *
 from datetime import date, datetime
+
+from beautiful_date import Feb, Mar, Oct, \
+    years, months, weeks, days, hours, minutes, seconds, microseconds, leapday, \
+    year, month, day, hour, minute, second, microsecond, yearday, nlyearday, \
+    MO, SA
 
 
 class TestBeautifulTimedelta(unittest.TestCase):
@@ -98,7 +101,3 @@ class TestBeautifulTimedelta(unittest.TestCase):
         self.assertEqual(d + MO(2), date(2018, 4, 9))
         self.assertEqual(d - SA(2), date(2018, 3, 17))
         self.assertEqual(d + SA(-2), date(2018, 3, 17))
-
-
-if __name__ == '__main__':
-    unittest.main()

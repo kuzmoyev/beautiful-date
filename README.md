@@ -1,7 +1,8 @@
 # Beautiful Date
 
-[![Build Status](https://travis-ci.org/kuzmoyev/beautiful-date.svg?branch=master)](https://travis-ci.org/kuzmoyev/beautiful-date)
 [![PyPI version](https://badge.fury.io/py/beautiful-date.svg)](https://badge.fury.io/py/beautiful-date)
+[![Tests](https://github.com/kuzmoyev/Google-Calendar-Simple-API/workflows/Tests/badge.svg)](https://github.com/kuzmoyev/Google-Calendar-Simple-API/actions)
+[![Downloads](https://pepy.tech/badge/beautiful-date)](https://pepy.tech/project/beautiful-date)
 
 Simple and beautiful way to create date and datetime objects in Python.
        
@@ -62,6 +63,16 @@ BeautifulDate(2018, 3, 25)
 >>> D = MDY()  # Add this at the top of your script to use US format. 
 >>> d = D @ 3/25/2018  # US format
 BeautifulDate(2018, 3, 25)
+```
+
+You can also easily retrieve current date as a `BeautifulDate` object and current time using:
+
+```python3
+>>> D.today()
+BeautifulDate(2020, 8, 24)
+
+>>> D.now()
+datetime.datetime(2020, 8, 24, 0, 59, 12, 451363)
 ```
     
 Available formats (needed only if you create dates using `D@`):
@@ -153,9 +164,9 @@ BeautifulDate(2, 3, 26)
 >>> d
 BeautifulDate(2018, 3, 2)
 
->>> t + 22 * hours
+>>> t + 22 * hour
 datetime.datetime(2018, 3, 26, 22, 23, 15)
->>> t += 22 * hours
+>>> t += 22 * hour
 >>> t
 datetime.datetime(2018, 3, 26, 22, 23, 15)
 ```

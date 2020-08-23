@@ -6,5 +6,6 @@ venv*/
 .pytest_cache
 beautiful_date.egg-info
 dist/
+build
 
 .coverage
