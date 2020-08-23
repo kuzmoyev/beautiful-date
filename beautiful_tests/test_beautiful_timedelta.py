@@ -101,7 +101,3 @@ class TestBeautifulTimedelta(unittest.TestCase):
         self.assertEqual(d + MO(2), date(2018, 4, 9))
         self.assertEqual(d - SA(2), date(2018, 3, 17))
         self.assertEqual(d + SA(-2), date(2018, 3, 17))
-
-
-if __name__ == '__main__':
-    unittest.main()
