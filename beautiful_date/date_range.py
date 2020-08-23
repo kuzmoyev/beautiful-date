@@ -40,9 +40,7 @@ class drange:
         if not step:
             raise ValueError('drange() step must be positive or negative step, not 0')
 
-        self._backwards = False
-        if timedelta_is_negative(step):
-            self._backwards = True
+        self._backwards = timedelta_is_negative(step)
 
         self._start = start
         self._stop = stop
@@ -55,17 +53,9 @@ class drange:
         return self
 
     def __next__(self):
-        if self._backwards:
-            if self._start > self._stop:
-                ret = self._start
-                self._start += self._step
-                return ret
-            else:
-                raise StopIteration
-        else:
-            if self._start < self._stop:
-                ret = self._start
-                self._start += self._step
-                return ret
-            else:
-                raise StopIteration
+        if (self._backwards and self._start <= self._stop) or (not self._backwards and self._start >= self._stop):
+            raise StopIteration
+
+        ret = self._start
+        self._start += self._step
+        return ret
