@@ -1,7 +1,7 @@
 # Beautiful Date
 
-[![Build Status](https://travis-ci.org/kuzmoyev/beautiful-date.svg?branch=master)](https://travis-ci.org/kuzmoyev/beautiful-date)
 [![PyPI version](https://badge.fury.io/py/beautiful-date.svg)](https://badge.fury.io/py/beautiful-date)
+[![Tests](https://github.com/kuzmoyev/Google-Calendar-Simple-API/workflows/Tests/badge.svg)](https://github.com/kuzmoyev/Google-Calendar-Simple-API/actions)
 [![Downloads](https://pepy.tech/badge/beautiful-date)](https://pepy.tech/project/beautiful-date)
 
 Simple and beautiful way to create date and datetime objects in Python.
