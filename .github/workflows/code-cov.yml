@@ -20,7 +20,7 @@ jobs:
 
       - name: Generate code coverage
         run: |
-          pytest --cov-report xml --cov=beautiful_date beautiful_tests
+          python -m pytest --cov-report xml --cov=beautiful_date beautiful_tests
 
       - name: Post to GitHub
         uses: 5monkeys/cobertura-action@master
