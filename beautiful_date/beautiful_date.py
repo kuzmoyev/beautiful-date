@@ -29,7 +29,7 @@ class BeautifulDate(date):
         elif isinstance(t, int):
             h, m, s = t, 0, 0
         else:
-            return NotImplemented
+            raise TypeError("Time values must be integer or slice, not {!r}".format(t.__class__.__name__))
 
         return datetime(self.year, self.month, self.day, hour=h, minute=m, second=s)
 
@@ -91,6 +91,15 @@ class BaseDateFormat:
 
     def __str__(self):
         return '{}{}'.format(self.__class__.__name__, self._format)
+
+    @staticmethod
+    def today():
+        today = date.today()
+        return BeautifulDate(year=today.year, month=today.month, day=today.day)
+
+    @staticmethod
+    def now():
+        return datetime.now()
 
 
 class DMY(BaseDateFormat):
