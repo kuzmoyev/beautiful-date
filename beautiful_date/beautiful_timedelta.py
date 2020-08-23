@@ -1,6 +1,7 @@
 from dateutil.relativedelta import relativedelta, weekdays
 from datetime import date, datetime
-from beautiful_date import *
+
+from beautiful_date import BeautifulDate
 
 
 class _RelativeDelta(relativedelta):
