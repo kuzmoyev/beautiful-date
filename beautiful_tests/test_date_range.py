@@ -1,7 +1,6 @@
 import unittest
-
-from beautiful_date import *
 from itertools import zip_longest as zipl
+from beautiful_date import Mar, Apr, days, hours, drange
 
 
 class TestDrange(unittest.TestCase):

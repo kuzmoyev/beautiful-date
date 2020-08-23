@@ -1,7 +1,10 @@
 import unittest
-
-from beautiful_date import *
 from datetime import date, datetime
+
+from beautiful_date import Feb, Mar, Oct, \
+    years, months, weeks, days, hours, minutes, seconds, microseconds, leapday, \
+    year, month, day, hour, minute, second, microsecond, yearday, nlyearday, \
+    MO, SA
 
 
 class TestBeautifulTimedelta(unittest.TestCase):

@@ -1,7 +1,6 @@
 import unittest
-
-from beautiful_date import *
 from datetime import date, datetime
+from beautiful_date import D, MDY, M, Jan, Feb, May, Oct
 
 
 class TestBeautifulDate(unittest.TestCase):

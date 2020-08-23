@@ -1,6 +1,6 @@
 from datetime import date, datetime
 
-from beautiful_date import *
+from beautiful_date import BeautifulDate, days
 
 
 def timedelta_is_negative(td):
