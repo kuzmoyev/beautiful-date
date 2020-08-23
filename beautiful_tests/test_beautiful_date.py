@@ -1,6 +1,6 @@
 import unittest
 from datetime import date, datetime
-from beautiful_date import D, MDY, M, Jan, Feb, May, Oct
+from beautiful_date import D, MDY, M, Jan, Feb, May, Oct, BeautifulDate
 
 
 class TestBeautifulDate(unittest.TestCase):
@@ -40,6 +40,10 @@ class TestBeautifulDate(unittest.TestCase):
         self.assertEqual((D @ 22 / 7 / 1938)[20:11], datetime(day=22, month=7, year=1938, hour=20, minute=11))
         self.assertEqual((D @ 29 - 2 - 1988)[10:11:12],
                          datetime(day=29, month=2, year=1988, hour=10, minute=11, second=12))
+
+    def test_today_now(self):
+        self.assertIsInstance(D.today(), BeautifulDate)
+        self.assertIsInstance(D.now(), datetime)
 
     def test_time_type_error(self):
         with self.assertRaises(TypeError):
