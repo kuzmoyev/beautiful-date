@@ -54,7 +54,7 @@ DOWNLOAD_URL = 'https://github.com/kuzmoyev/beautiful-date/archive/1.0.tar.gz'
 EMAIL = 'kuzmovych.goog@gmail.com'
 AUTHOR = 'Yevhen Kuzmovych'
 REQUIRES_PYTHON = '>=3.5.0'
-VERSION = '2.0'
+VERSION = '2.0.0'
 
 REQUIRED = [
     'python-dateutil>=2.7.0',
