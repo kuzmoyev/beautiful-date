@@ -33,6 +33,13 @@ class BeautifulDate(date):
 
         return datetime(self.year, self.month, self.day, hour=h, minute=m, second=s)
 
+    def to_date(self):
+        """
+        Converts BeautifulDate to a simple Python date
+        :return: date object
+        """
+        return date(self.year, self.month, self.day)
+
 
 # Classes to build date
 #   D @ 16/10/1995 (16/Oct/1995)
