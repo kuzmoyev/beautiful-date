@@ -81,7 +81,7 @@ setup(
     url=URL,
     download_url=DOWNLOAD_URL,
     py_modules=['beautiful_date', 'beautiful_timedelta', 'date_range'],
-    packages=['beautiful_date', 'beautiful_tests'],
+    packages=['beautiful_date'],
     install_requires=REQUIRED,
     tests_require=TESTS_REQUIRED,
     include_package_data=True,
