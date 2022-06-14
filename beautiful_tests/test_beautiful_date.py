@@ -1,6 +1,6 @@
 import unittest
 from datetime import date, datetime
-from beautiful_date import D, MDY, M, Jan, Feb, May, Oct, BeautifulDate
+from beautiful_date import D, MDY, M, Jan, Feb, May, Oct, Jun, BeautifulDate
 
 
 class TestBeautifulDate(unittest.TestCase):
@@ -48,3 +48,8 @@ class TestBeautifulDate(unittest.TestCase):
     def test_time_type_error(self):
         with self.assertRaises(TypeError):
             _ = (15 / Jan / 2020)['evening']
+
+    def test_to_date(self):
+        d = (14 / Jun / 2022).to_date()
+        self.assertIsInstance(d, date)
+        self.assertEqual(d, date(2022, 6, 14))
