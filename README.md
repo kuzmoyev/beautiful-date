@@ -65,18 +65,8 @@ BeautifulDate(2018, 3, 25)
 BeautifulDate(2018, 3, 25)
 ```
 
-You can also easily retrieve current date as a `BeautifulDate` object and current time using:
-
-```python3
->>> D.today()
-BeautifulDate(2020, 8, 24)
-
->>> D.now()
-datetime.datetime(2020, 8, 24, 0, 59, 12, 451363)
-```
-    
 Available formats (needed only if you create dates using `D@`):
-    
+
 ```python3
 class DMY(BaseDateFormat):
     _format = 'day', 'month', 'year'
@@ -90,7 +80,17 @@ class YMD(BaseDateFormat):
 class YDM(BaseDateFormat):
     _format = 'year', 'day', 'month'
 ``` 
- 
+
+You can also easily retrieve current date as a `BeautifulDate` object and current time using:
+
+```python3
+>>> D.today()
+BeautifulDate(2020, 8, 24)
+
+>>> D.now()
+datetime.datetime(2020, 8, 24, 0, 59, 12, 451363)
+```
+
 ### Create Datetime
 
 Previous methods create `BeautifulDate` objects which are inherited from `date` but can be 
@@ -158,8 +158,8 @@ Available deltas: `years`, `months`, `weeks`, `days`, `hours`, `minutes`,
 >>> d = 26/Mar/2018
 >>> t = d[12:23:15]
 
->>> d + 2 * year
-BeautifulDate(2, 3, 26)
+>>> d + 2022 * year
+BeautifulDate(2022, 3, 26)
 >>> d += 2 * day
 >>> d
 BeautifulDate(2018, 3, 2)
