@@ -25,11 +25,12 @@ class drange:
 
     def __init__(self, start_or_stop, stop=None, step=1 * days):
         if stop is None:
-            if isinstance(start_or_stop, date):
-                now = date.today()
+            if isinstance(start_or_stop, datetime):
+                start = datetime.now()
             else:
-                now = datetime.now()
-            start = BeautifulDate(now.year, now.month, now.day)
+                now = date.today()
+                start = BeautifulDate(now.year, now.month, now.day)
+
             stop = start_or_stop
         else:
             start = start_or_stop

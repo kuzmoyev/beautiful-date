@@ -1,7 +1,7 @@
 import unittest
-from datetime import date
+from datetime import date, datetime, timedelta
 from itertools import zip_longest as zipl
-from beautiful_date import Mar, Apr, days, hours, drange
+from beautiful_date import Mar, Apr, days, hours, drange, seconds
 
 
 class TestDrange(unittest.TestCase):
@@ -21,13 +21,13 @@ class TestDrange(unittest.TestCase):
         ]
 
         for d, e in zipl(drange(27 / Mar / 1994, 5 / Apr / 1994), dates[:-1]):
-            self.assertEqual(d, e)
+            self.assertEqual(e, d)
 
         for d, e in zipl(drange(27 / Mar / 1994, 5 / Apr / 1994, 2 * days), dates[:-1:2]):
-            self.assertEqual(d, e)
+            self.assertEqual(e, d)
 
         for d, e in zipl(drange(5 / Apr / 1994, 27 / Mar / 1994, -2 * days), dates[:0:-2]):
-            self.assertEqual(d, e)
+            self.assertEqual(e, d)
 
         today = date.today()
         dates = [
@@ -37,7 +37,7 @@ class TestDrange(unittest.TestCase):
         ]
 
         for d, e in zipl(drange(today + 5 * days, step=2 * days), dates):
-            self.assertEqual(d, e)
+            self.assertEqual(e, d)
 
     def test_beautiful_drange_datetimes(self):
         times = [
@@ -63,13 +63,23 @@ class TestDrange(unittest.TestCase):
         ]
 
         for t, e in zip(drange((27 / Mar / 1994)[10:25], (4 / Apr / 1994)[10:10]), times[:-1:2]):
-            self.assertEqual(t, e)
+            self.assertEqual(e, t)
 
         for t, e in zip(drange((27 / Mar / 1994)[10:25], (4 / Apr / 1994)[10:10], 12 * hours), times[:-1]):
-            self.assertEqual(t, e)
+            self.assertEqual(e, t)
 
         for t, e in zip(drange((5 / Apr / 1994)[10:25], (27 / Mar / 1994)[10:25], -12 * hours), times[:0:-1]):
-            self.assertEqual(t, e)
+            self.assertEqual(e, t)
+
+        now = datetime.now()
+        dates = [
+            now,
+            now + 2 * days,
+            now + 4 * days
+        ]
+
+        for t, e in zipl(drange(now + 5 * days, step=2 * days), dates):
+            self.assertAlmostEqual(e, t, delta=timedelta(seconds=1))
 
     def test_zero_step_error(self):
         with self.assertRaises(ValueError):
