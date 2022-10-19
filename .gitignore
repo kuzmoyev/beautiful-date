@@ -8,4 +8,4 @@ beautiful_date.egg-info
 dist/
 build
 
-.coverage
+.coverage.*
