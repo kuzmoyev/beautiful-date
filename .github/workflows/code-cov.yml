@@ -3,8 +3,9 @@ name: Code coverage
 on: [pull_request]
 
 jobs:
-  build:
-
+  run:
+    # Don't run on PRs from forks
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
 
     steps:
@@ -12,15 +13,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: '3.10'
 
       - name: Install dependencies
-        run: |
-          pip install -e ".[dev]"
+        run: pip install tox
 
       - name: Generate code coverage
-        run: |
-          python -m pytest --cov-report xml --cov=beautiful_date beautiful_tests
+        run: tox -e coverage
+
 
       - name: Post to GitHub
         uses: 5monkeys/cobertura-action@master

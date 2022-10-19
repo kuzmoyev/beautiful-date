@@ -1,0 +1,52 @@
+action: GLOB, msg: packaging
+cwd: /Users/kuzmovych-mac/PycharmProjects/beautiful-date
+cmd: /Users/kuzmovych-mac/PycharmProjects/beautiful-date/venv/bin/python setup.py sdist --formats=zip --dist-dir .tox/dist
+running sdist
+running egg_info
+writing beautiful_date.egg-info/PKG-INFO
+writing dependency_links to beautiful_date.egg-info/dependency_links.txt
+writing requirements to beautiful_date.egg-info/requires.txt
+writing top-level names to beautiful_date.egg-info/top_level.txt
+file beautiful_date.py (for module beautiful_date) not found
+file beautiful_timedelta.py (for module beautiful_timedelta) not found
+file date_range.py (for module date_range) not found
+reading manifest file 'beautiful_date.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file 'beautiful_date.egg-info/SOURCES.txt'
+running check
+creating beautiful-date-2.2.0
+creating beautiful-date-2.2.0/beautiful_date
+creating beautiful-date-2.2.0/beautiful_date.egg-info
+copying files to beautiful-date-2.2.0...
+copying LICENSE -> beautiful-date-2.2.0
+copying README.md -> beautiful-date-2.2.0
+copying setup.py -> beautiful-date-2.2.0
+copying beautiful_date/__init__.py -> beautiful-date-2.2.0/beautiful_date
+copying beautiful_date/beautiful_date.py -> beautiful-date-2.2.0/beautiful_date
+copying beautiful_date/beautiful_timedelta.py -> beautiful-date-2.2.0/beautiful_date
+copying beautiful_date/date_range.py -> beautiful-date-2.2.0/beautiful_date
+copying beautiful_date.egg-info/PKG-INFO -> beautiful-date-2.2.0/beautiful_date.egg-info
+copying beautiful_date.egg-info/SOURCES.txt -> beautiful-date-2.2.0/beautiful_date.egg-info
+copying beautiful_date.egg-info/dependency_links.txt -> beautiful-date-2.2.0/beautiful_date.egg-info
+copying beautiful_date.egg-info/requires.txt -> beautiful-date-2.2.0/beautiful_date.egg-info
+copying beautiful_date.egg-info/top_level.txt -> beautiful-date-2.2.0/beautiful_date.egg-info
+Writing beautiful-date-2.2.0/setup.cfg
+creating '.tox/dist/beautiful-date-2.2.0.zip' and adding 'beautiful-date-2.2.0' to it
+adding 'beautiful-date-2.2.0'
+adding 'beautiful-date-2.2.0/beautiful_date.egg-info'
+adding 'beautiful-date-2.2.0/beautiful_date'
+adding 'beautiful-date-2.2.0/PKG-INFO'
+adding 'beautiful-date-2.2.0/LICENSE'
+adding 'beautiful-date-2.2.0/README.md'
+adding 'beautiful-date-2.2.0/setup.py'
+adding 'beautiful-date-2.2.0/setup.cfg'
+adding 'beautiful-date-2.2.0/beautiful_date.egg-info/PKG-INFO'
+adding 'beautiful-date-2.2.0/beautiful_date.egg-info/SOURCES.txt'
+adding 'beautiful-date-2.2.0/beautiful_date.egg-info/requires.txt'
+adding 'beautiful-date-2.2.0/beautiful_date.egg-info/top_level.txt'
+adding 'beautiful-date-2.2.0/beautiful_date.egg-info/dependency_links.txt'
+adding 'beautiful-date-2.2.0/beautiful_date/beautiful_date.py'
+adding 'beautiful-date-2.2.0/beautiful_date/beautiful_timedelta.py'
+adding 'beautiful-date-2.2.0/beautiful_date/__init__.py'
+adding 'beautiful-date-2.2.0/beautiful_date/date_range.py'
+removing 'beautiful-date-2.2.0' (and everything under it)

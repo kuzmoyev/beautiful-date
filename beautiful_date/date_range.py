@@ -8,7 +8,7 @@ def timedelta_is_negative(td):
     return datetime.now() > datetime.now() + td
 
 
-class drange:
+class drange:  # noqa: N801
     """
     drange(stop) -> drange object
     drange(start, stop[, step]) -> drange object

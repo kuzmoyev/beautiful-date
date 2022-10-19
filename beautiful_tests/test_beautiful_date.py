@@ -23,8 +23,8 @@ class TestBeautifulDate(unittest.TestCase):
         self.assertEqual(21 - M[12] - 1994, date(day=21, month=12, year=1994))
         self.assertEqual(29 / M[2] / 1988, date(day=29, month=2, year=1988))
 
-    def test_date_create_by_prefix_MDY(self):
-        D = MDY()
+    def test_date_create_by_prefix_MDY(self):  # noqa: N802
+        D = MDY()  # noqa: N806
         self.assertEqual(D @ 9 - 23 - 1996, date(day=23, month=9, year=1996))
         self.assertEqual(D @ 10 / 31 / 1995, date(day=31, month=10, year=1995))
         self.assertEqual(D @ 2 - 29 - 1984, date(day=29, month=2, year=1984))

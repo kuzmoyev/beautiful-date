@@ -1,14 +1,21 @@
 name: Tests
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
-  build:
+  run:
 
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.5, 3.6, 3.7, 3.8]
+        python-version: [ '3.6', '3.7', '3.8', '3.9', '3.10' ]
+        include:
+          - python-version: '3.10'
+            note: with-style-check
 
     steps:
       - uses: actions/checkout@v2
@@ -17,14 +24,8 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install dependencies
-        run: |
-          pip install -e ".[dev]"
+      - name: Install tox
+        run: pip install tox tox-gh-actions
 
-      - name: Code style check
-        run: |
-          flake8 beautiful_date beautiful_tests
-
-      - name: Run tests
-        run: |
-          python -m pytest
+      - name: Running tests
+        run: tox
