@@ -58,8 +58,8 @@ VERSION = '2.2.0'
 
 REQUIRED = [
     'python-dateutil>=2.7.0',
-    'six>=1.11.0'
 ]
+
 TESTS_REQUIRED = [
     "pytest>=5.4",
     "pytest-cov>=2.10",
