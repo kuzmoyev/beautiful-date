@@ -53,3 +53,10 @@ class TestBeautifulDate(unittest.TestCase):
         d = (14 / Jun / 2022).to_date()
         self.assertIsInstance(d, date)
         self.assertEqual(d, date(2022, 6, 14))
+
+    def test_repr_str(self):
+        self.assertEqual(repr(30 / Jan / 1996), 'BeautifulDate(1996, 1, 30)')
+        self.assertEqual(str(30 / Jan / 1996), '1996-01-30')
+
+        self.assertEqual(repr(D), "DMY('day', 'month', 'year')")
+        self.assertEqual(repr(MDY()), "MDY('month', 'day', 'year')")
