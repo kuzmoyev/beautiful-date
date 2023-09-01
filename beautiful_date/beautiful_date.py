@@ -99,8 +99,8 @@ class BaseDateFormat:
         return BeautifulDate(year=today.year, month=today.month, day=today.day)
 
     @staticmethod
-    def now():
-        return datetime.now()
+    def now(tz=None):
+        return datetime.now(tz=tz)
 
 
 class DMY(BaseDateFormat):
