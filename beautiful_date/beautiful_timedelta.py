@@ -4,7 +4,7 @@ from datetime import date, datetime
 from beautiful_date import BeautifulDate
 
 
-class _RelativeDelta(relativedelta):
+class RelativeDelta(relativedelta):
     """Same as relativedelta, but returns BeautifulDate in the result.
 
     Examples:
@@ -27,17 +27,17 @@ class BeautifulTimedelta:
 
     Examples:
         >>> 3*years
-        _RelativeDelta(years=+3)
+        RelativeDelta(years=+3)
 
         >>> -5*weeks
-        _RelativeDelta(days=-35)
+        RelativeDelta(days=-35)
     """
 
     def __init__(self, name):
         self.name = name
 
     def __rmul__(self, n):
-        return _RelativeDelta(**{self.name: n})
+        return RelativeDelta(**{self.name: n})
 
 
 _ = BeautifulTimedelta
