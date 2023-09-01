@@ -69,12 +69,6 @@ class _PartialDate:
 
     __sub__ = __truediv__
 
-    def __str__(self):
-        return '/'.join(str(v) for v in self._date_values)
-
-    def __repr__(self):
-        return '{}({})'.format(self.__class__.__name__, self.__str__())
-
 
 class BaseDateFormat:
     """Base class for date format.
@@ -96,7 +90,7 @@ class BaseDateFormat:
     def __matmul__(self, first):
         return _PartialDate(first, self._format)
 
-    def __str__(self):
+    def __repr__(self):
         return '{}{}'.format(self.__class__.__name__, self._format)
 
     @staticmethod
@@ -152,9 +146,6 @@ class _Day:
 
     def __sub__(self, y):
         return BeautifulDate(year=y, month=self.m, day=self.d)
-
-    def __repr__(self):
-        return '{}({}, {})'.format(self.__class__.__name__, self.d, self.m)
 
     __truediv__ = __sub__
 

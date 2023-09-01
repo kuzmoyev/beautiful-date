@@ -97,6 +97,12 @@ class TestDrange(unittest.TestCase):
         for t, e in zipl(drange(now - 5 * days, step=-2 * days), times):
             self.assertAlmostEqual(e, t, delta=timedelta(seconds=1))
 
+    def test_repr(self):
+        self.assertEqual(repr(drange(27 / Mar / 1994, 5 / Apr / 1994)),
+                         'drange(1994-03-27, 1994-04-05, _RelativeDelta(days=+1))')
+        self.assertEqual(repr(drange((27 / Mar / 1994)[10:25], (4 / Apr / 1994)[10:10], 12 * hours)),
+                         'drange(1994-03-27 10:25:00, 1994-04-04 10:10:00, _RelativeDelta(hours=+12))')
+
     def test_zero_step_error(self):
         with self.assertRaises(ValueError):
             _ = drange((5 / Apr / 1994), step=0 * days)
