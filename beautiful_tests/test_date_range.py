@@ -99,9 +99,9 @@ class TestDrange(unittest.TestCase):
 
     def test_repr(self):
         self.assertEqual(repr(drange(27 / Mar / 1994, 5 / Apr / 1994)),
-                         'drange(1994-03-27, 1994-04-05, RelativeDelta(days=+1))')
+                         'drange(1994-03-27, 1994-04-05, BeautifulRelativeDelta(days=+1))')
         self.assertEqual(repr(drange((27 / Mar / 1994)[10:25], (4 / Apr / 1994)[10:10], 12 * hours)),
-                         'drange(1994-03-27 10:25:00, 1994-04-04 10:10:00, RelativeDelta(hours=+12))')
+                         'drange(1994-03-27 10:25:00, 1994-04-04 10:10:00, BeautifulRelativeDelta(hours=+12))')
 
     def test_zero_step_error(self):
         with self.assertRaises(ValueError):

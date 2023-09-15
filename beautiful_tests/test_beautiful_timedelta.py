@@ -1,10 +1,12 @@
 import unittest
 from datetime import date, datetime
 
+from freezegun import freeze_time
+
 from beautiful_date import Feb, Mar, Oct, \
     years, months, weeks, days, hours, minutes, seconds, microseconds, leapday, \
     year, month, day, hour, minute, second, microsecond, yearday, nlyearday, \
-    MO, SA
+    MO, SA, D
 
 
 class TestBeautifulTimedelta(unittest.TestCase):
@@ -101,3 +103,24 @@ class TestBeautifulTimedelta(unittest.TestCase):
         self.assertEqual(d + MO(2), date(2018, 4, 9))
         self.assertEqual(d - SA(2), date(2018, 3, 17))
         self.assertEqual(d + SA(-2), date(2018, 3, 17))
+
+    def test_with_start(self):
+        initial_date = D.today()
+        with freeze_time(initial_date):
+            self.assertEqual(initial_date + 2 * days, 2 * days.from_today)
+            self.assertEqual(initial_date + 3 * days, 2 * days.from_(initial_date + 1 * days))
+            self.assertEqual(initial_date + 3 * days, 2 * days.since(initial_date + 1 * days))
+
+            self.assertEqual(initial_date - 2 * days, 2 * days.until_today)
+            self.assertEqual(initial_date - 3 * days, 2 * days.until(initial_date - 1 * days))
+            self.assertEqual(initial_date - 3 * days, 2 * days.before(initial_date - 1 * days))
+
+        initial_time = D.now()
+        with freeze_time(initial_time):
+            self.assertEqual(initial_time + 2 * hours, 2 * hours.from_now)
+            self.assertEqual(initial_time + 3 * hours, 2 * hours.from_(initial_time + 1 * hours))
+            self.assertEqual(initial_time + 3 * hours, 2 * hours.since(initial_time + 1 * hours))
+
+            self.assertEqual(initial_time - 2 * hours, 2 * hours.until_now)
+            self.assertEqual(initial_time - 3 * hours, 2 * hours.until(initial_time - 1 * hours))
+            self.assertEqual(initial_time - 3 * hours, 2 * hours.before(initial_time - 1 * hours))

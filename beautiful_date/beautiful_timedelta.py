@@ -1,10 +1,10 @@
 from dateutil.relativedelta import relativedelta, weekdays
 from datetime import date, datetime
 
-from beautiful_date import BeautifulDate
+from beautiful_date import BeautifulDate, D
 
 
-class RelativeDelta(relativedelta):
+class BeautifulRelativeDelta(relativedelta):
     """Same as relativedelta, but returns BeautifulDate in the result.
 
     Examples:
@@ -23,21 +23,74 @@ class RelativeDelta(relativedelta):
 
 
 class BeautifulTimedelta:
-    """Creates timedelta with specified time unit using operator '*'
+    """Creates timedelta with specified time unit using operator '*'."""
 
-    Examples:
-        >>> 3*years
-        RelativeDelta(years=+3)
-
-        >>> -5*weeks
-        RelativeDelta(days=-35)
-    """
-
-    def __init__(self, name):
+    def __init__(self, name, start=None, is_until=False):
         self.name = name
+        self.start = start
+        self.is_until = is_until
 
     def __rmul__(self, n):
-        return RelativeDelta(**{self.name: n})
+        """If start is set, returns BeautifulDate or datetime (depending on the start's type).
+        Examples:
+            >>> 5*days.from_today
+            BeautifulDate(2023, 9, 17)
+
+            >>> 1*hours.from_now
+            datetime.datetime(2023, 9, 12, 12, 53, 56)
+
+            >>> 5*days.until_today
+            BeautifulDate(2023, 9, 7)
+
+            >>> 1*hours.until_now
+            datetime.datetime(2023, 9, 12, 11, 13, 4)
+
+
+
+        Otherwise, returns BeautifulRelativeDelta.
+        Examples:
+            >>> 3*years
+            BeautifulRelativeDelta(years=+3)
+
+            >>> -5*weeks
+            BeautifulRelativeDelta(days=-35)
+        """
+
+        if self.start is not None:
+            if self.is_until:
+                return self.start + BeautifulRelativeDelta(**{self.name: -n})
+            else:
+                return self.start + BeautifulRelativeDelta(**{self.name: n})
+        else:
+            return BeautifulRelativeDelta(**{self.name: n})
+
+    def from_(self, start):
+        return BeautifulTimedelta(self.name, start=start)
+
+    since = from_
+
+    @property
+    def from_now(self):
+        return self.from_(D.now())
+
+    @property
+    def from_today(self):
+        return self.from_(D.today())
+
+    def until(self, start):
+        return BeautifulTimedelta(self.name, start=start, is_until=True)
+
+    before = until
+
+    @property
+    def until_now(self):
+        return self.until(D.now())
+
+    ago = until_now
+
+    @property
+    def until_today(self):
+        return self.until(D.today())
 
 
 _ = BeautifulTimedelta

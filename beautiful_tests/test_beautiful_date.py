@@ -41,9 +41,11 @@ class TestBeautifulDate(unittest.TestCase):
         self.assertEqual((D @ 29 - 2 - 1988)[10:11:12],
                          datetime(day=29, month=2, year=1988, hour=10, minute=11, second=12))
 
-    def test_today_now(self):
+    def test_today_now_tomorrow_yesterday(self):
         self.assertIsInstance(D.today(), BeautifulDate)
         self.assertIsInstance(D.now(), datetime)
+        self.assertIsInstance(D.tomorrow(), BeautifulDate)
+        self.assertIsInstance(D.yesterday(), BeautifulDate)
 
     def test_time_type_error(self):
         with self.assertRaises(TypeError):

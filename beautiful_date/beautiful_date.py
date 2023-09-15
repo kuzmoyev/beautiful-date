@@ -1,5 +1,7 @@
 from datetime import date, datetime
 
+from dateutil.relativedelta import relativedelta
+
 
 class BeautifulDate(date):
     """Date object that can be extended to datetime by using Python indexing/slicing:
@@ -101,6 +103,16 @@ class BaseDateFormat:
     @staticmethod
     def now(tz=None):
         return datetime.now(tz=tz)
+
+    @staticmethod
+    def tomorrow():
+        day = D.today() + relativedelta(days=1)
+        return BeautifulDate(year=day.year, month=day.month, day=day.day)
+
+    @staticmethod
+    def yesterday():
+        day = D.today() - relativedelta(days=1)
+        return BeautifulDate(year=day.year, month=day.month, day=day.day)
 
 
 class DMY(BaseDateFormat):

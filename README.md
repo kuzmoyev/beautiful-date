@@ -65,22 +65,6 @@ BeautifulDate(2018, 3, 25)
 BeautifulDate(2018, 3, 25)
 ```
 
-Available formats (needed only if you create dates using `D@`):
-
-```python3
-class DMY(BaseDateFormat):
-    _format = 'day', 'month', 'year'
-
-class MDY(BaseDateFormat):
-    _format = 'month', 'day', 'year'
-
-class YMD(BaseDateFormat):
-    _format = 'year', 'month', 'day'
-
-class YDM(BaseDateFormat):
-    _format = 'year', 'day', 'month'
-``` 
-
 You can also easily retrieve current date as a `BeautifulDate` object and current time using:
 
 ```python3
@@ -89,6 +73,12 @@ BeautifulDate(2020, 8, 24)
 
 >>> D.now()
 datetime.datetime(2020, 8, 24, 0, 59, 12, 451363)
+
+>>> D.tomorrow()
+BeautifulDate(2020, 8, 25)
+
+>>> D.yesterday()
+BeautifulDate(2020, 8, 23)
 ```
 
 ### Create Datetime
@@ -132,10 +122,31 @@ This library also provides simple interface for
 [relativedelta](http://dateutil.readthedocs.io/en/stable/relativedelta.html) from 
 [dateutil](http://dateutil.readthedocs.io/en/stable/index.html)
 
-#### Adding/Subtracting/Setting timedeltas:
-
 Notice that singular time unit (year, month, ...) sets given value, plural (years, months,) adds it.
 
+#### Shortcuts:
+
+```python
+>>> 5*days.from_today
+BeautifulDate(2023, 9, 17)
+
+>>> 1*hours.from_now
+datetime.datetime(2023, 9, 12, 12, 53, 56)
+
+>>> 3*days.since(15/Mar/2023)
+BeautifulDate(2023, 3, 18)
+
+>>> 5*days.until_today
+BeautifulDate(2023, 9, 7)
+
+>>> 1*hours.until_now
+datetime.datetime(2023, 9, 12, 11, 13, 4)
+
+>>> 3*days.until(15/Mar/2023)
+BeautifulDate(2023, 3, 12)
+```
+
+#### Adding/Subtracting/Setting timedeltas:
 
 ```python3
 >>> d = 26/Mar/2018
