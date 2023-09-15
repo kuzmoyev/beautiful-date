@@ -73,6 +73,12 @@ BeautifulDate(2020, 8, 24)
 
 >>> D.now()
 datetime.datetime(2020, 8, 24, 0, 59, 12, 451363)
+
+>>> D.tomorrow()
+BeautifulDate(2020, 8, 25)
+
+>>> D.yesterday()
+BeautifulDate(2020, 8, 23)
 ```
 
 ### Create Datetime
